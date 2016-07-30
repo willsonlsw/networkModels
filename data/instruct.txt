@@ -1,0 +1,86 @@
+系统命令:
+	help  下载本手册
+	clear  清空命令行
+	upload  上传图文件
+	varls  列出所有图对象
+	new		新建图对象
+-----------------------------------------------------------------------
+图对象操作：
+	图基类：	graph
+			参数：nodeN 节点数量
+						direct 1/0有向无向图
+			方法	
+					无参数方法
+						ls()	列出图对象信息
+						gen()	图生成
+						show()	图显示
+						calcc()	计算聚类系数
+						calcent()	计算centrality
+						apld()	计算平均路径和直径
+						degreedis()	计算度分布，以度分布图的形式显示
+						theta()	显示幂律分布的两个参数
+						powerlaw()	绘制幂律分布图及直线拟合
+						editor()	编辑图
+						refreshattr()	更新graph attribution区域
+						updata()	重新计算当前图的平均路径、直径和聚类系数，并更新graph attribution区域
+					带参数方法
+						largeshow a			a为整数参数，显示具有最大degree centrality的top a个节点
+						largeshow a b		a，b为整数参数，显示degree centrality排名在a到b之间的节点
+	
+	派生类：
+			继承上述图基类的所有参数与方法，还有一些附加参数
+			
+			randomgraph		随机图模型
+					参数： 	rate 	float类型，连边的概率
+					默认值：nodeN=50
+									rate=0.2
+									direct=0
+			
+			smallworld		小世界模型
+					参数：	meand		int类型，度均值
+									rate		float类型，边修改概率
+					默认值：nodeN=100
+									meand=5
+									rate=0.5
+									direct=0
+			
+			pamload G			Preferental Attachment模型
+					G	为原始图对象
+					参数：	addnodeN	int类型，需在G的基础上添加的节点数
+									expe			int类型，新增节点度的期望值	
+									func			string类型，新增节点度的分布选择
+														func=ori	原始模型，度分布服从均值分布
+														func=poisson	度分布服从泊松分布
+																参数: a, b	int类型，偏移量			
+					默认值：addnodeN=1
+									expe=5
+									func=poisson
+											a=2
+											b=3
+			
+			load f				加载图文件f
+					f为通过upload命令上传的图文件名
+					
+			fitgraph G n	图拟合
+					拟合图对象G生成一个节点数为n的新图对象
+-----------------------------------------------------------------------
+example：
+		new g1=randomgraph				生成随机图对象				
+		g1.nodeN=20								修改图节点
+		g1.rate=0.25							修改连边概率
+		g1.gen()									生成图
+		g1.ls()										列出图对象信息
+		g1.calcc()								计算聚类系数
+		g1.calcent()							计算centrality
+		g1.show()									显示图
+		g1.editor()								编辑图对象g1
+		
+		new g2=load fb.txt				加载图文件fb.txt作为图对象g2
+		g2.powerlaw()							显示幂律拟合
+		g2.calcent()							
+		g2.largeshow 30						显示degree centrality的Top 30节点连接情况
+		g2.largeshow 100 150			显示degree centrality排名100到150的节点连接情况
+		
+		new g3=fitgraph g2 10000	拟合图g2生成一个10000节点的图对象g3
+		g3.degreedis()						
+		g3.download()							下载g3

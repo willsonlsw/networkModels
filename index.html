@@ -1,0 +1,48 @@
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>Network Models</title>
+		<link href="css.css" rel="stylesheet" type="text/css" />
+	</head>
+
+	<body>
+		<script type="text/javascript" src="./js/d3.js"></script>
+		<script type="text/javascript" src="./js/echarts.js"></script>
+		<script type="text/javascript" src="./js/smm.js"></script>
+		<div id="Container">
+
+			<div id="HeadLog">
+				<img src="./Gif/NetworkModels.gif" height="100%" />
+			</div>
+
+			<HR style="border:1 double #987cb9" width="100%" color=#987cb9 SIZE=1>
+
+			<div id="Content">
+				<div id="GraphCont">
+				</div>
+				<div id="RightCont">
+					<div id="ProCont">
+						<img src="./Gif/GraphAttributes.gif" width="90%" />
+						<font id="nodesN" style="line-height:1.5;">Nodes Num:</font><br />
+						<font id="edgesN" style="line-height:1.5;">Edges Num:</font><br />
+						<font id="direct" style="line-height:1.5;">Directed:</font><br />
+						<font id="diameter" style="line-height:1.5;">Diameter:</font><br />
+						<font id="apl" style="line-height:1.5;">Average Path Length:</font><br />
+						<font id="averCC" style="line-height:1.5;">Average Clustering Coefficient:</font><br />
+						<font id="localCC" style="line-height:1.5;">Global Clustering Coefficient:</font><br />
+
+					</div>
+					<HR style="border:1 double #987cb9" width="100%" color=#987cb9 SIZE=1>
+					<div id="Commands">
+						<img src="./Gif/CommandLine.gif" width="70%"/>
+						<textarea name="content" cols="30" rows="5" id="Command" spellcheck="false" style="width:95%; height:80%; border: 1 solid #888888;LINE-HEIGHT:18px;padding: 3px;" onkeyup="textChange(this.value);"></textarea>
+					</div>
+				</div>
+			</div>
+
+			<div id="Footer">
+				<div style="text-align:center; margin-top:10px;" ><img src="./Gif/footer.gif" height="80%"/></div>
+			</div>
+		</div>
+	</body>
+</html>
